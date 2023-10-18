@@ -1,86 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <style>
-    body {
-      background-color: #141515;
-      color: #f4f4f4;
-      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    }
-    .title {
-        color: #d4ea0b;
-      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
-    }
-    .container {
-      text-align: center;
-      padding: 60px;
-    }
-    
-    .movie-widget1 {
-      background-color: #747475;
-      padding: 20px;
-      border-radius: 10px;
-      margin: 10px;
-    }
-    .keterangan {
-        text-align: left;
-        padding: 50px;
-    }
-
-</style>
+    <title>Movie List</title>
 </head>
 <body>
-  <div class="container">
-    <h1>Movie List</h1>
-    <div class="row">
-      <div class="col-md-4">
-        <div class="movie-list">
-            <div class="title">
-          <h2>They Shall Not </h2>
-          <h2> Grow Old</h2>
-          <img class="weather-icon" src="they shall not grow old.jpg" alt="Cuaca Cerah">
-     <!--<div class="keterangan"></div> 
-          <p>Actors : Mark Kermode, Peter Jackson</p>
-          <p>Awards : 60%</p>
-          <p>Box Office : 10 km/h</p>
-          <p>Country : 10 km/h</p>
-          <p>DVD : 10 km/h</p> 
-          <p>Director : 10 km/h</p>
-          <p>Genre : 10 km/h</p>
-          <p>Language : 10 km/h</p>
-          <p>Metascore : 10 km/h</p>
-          <p>Plot : 10 km/h</p>
-          <p>Poster : 10 km/h</p>
-          <p>Production : 10 km/h</p>
-          <p>Rating : 10 km/h</p>  -->
+    <h1>Daftar Film</h1>
+    <ul id="movieList">
+    </ul>
 
-
-          }
-          </style>
-          <body>
-          
-          
-          
-          <table style="width:100%">
-            <tr>
-              <th>Company</th>
-              <th>Contact</th>
-             <div class="keterangan"></div>
-            </tr>
-            <tr>
-              <td>Alfreds Futterkiste</td>
-              <td>Maria Anders</td>
-              <td>Germany</td>
-            </tr>
-            <tr>
-              <td>Centro comercial Moctezuma</td>
-              <td>Francisco Chang</td>
-              <td>Mexico</td>
-            </tr>
-          </table>
-          
-        </div>
-      </div>
+    <script>
+       
+        fetch('https://it-its.id/api/movies')
+            .then(response => response.json())
+            .then(data => {
+                const movieList = document.getElementById('movieList');
+              
+                data.forEach(movie => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = movie.title;
+                    movieList.appendChild(listItem);
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    </script>
+</body>
+</html>
