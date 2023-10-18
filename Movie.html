@@ -1,29 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Movie List</title>
+    <title>Movie Reviews</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <h1>Daftar Film</h1>
-    <ul id="movieList">
-    </ul>
+    <h1>Movie Reviews</h1>
 
-    <script>
-       
-        fetch('https://it-its.id/api/movies')
-            .then(response => response.json())
-            .then(data => {
-                const movieList = document.getElementById('movieList');
-              
-                data.forEach(movie => {
-                    const listItem = document.createElement('li');
-                    listItem.textContent = movie.title;
-                    movieList.appendChild(listItem);
-                });
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-    </script>
+    <div id="movie-list">
+        <h2>Daftar Film</h2>
+        <ul id="movie-ul"></ul>
+    </div>
+
+    
+
+    <script src="MOVIE.js"></script>
 </body>
 </html>
